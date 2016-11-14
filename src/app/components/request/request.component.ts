@@ -1,28 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/map';
+import { RequestService } from '../../services/request.service';
 
 @Component({
   selector: 'app-request',
   templateUrl: './request.component.html',
-  styleUrls: ['./request.component.css']
+  styleUrls: ['./request.component.css'],
+  providers: [RequestService]
 })
 export class RequestComponent implements OnInit {
 
-  articles:Array<any> = [
-    {name: "Article 1", _id: "1"},
-    {name: "Article 2", _id: "2"},
-    {name: "Article 3", _id: "3"},
-    {name: "Article 4", _id: "4"},
-  ];
+  articles:Array<any> = [];
 
   counter = this.articles.length+1;
 
   articleSelected;
   isEmpty:boolean = false;
 
-  constructor(private http:Http) { }
+  constructor(private requestService:RequestService) { }
 
   ngOnInit() {
   }
@@ -41,10 +36,14 @@ export class RequestComponent implements OnInit {
     }
   }
 
-  getArticlesByHttp():Observable<Object[]>{
-    return this.http.get('http://bioingcalculo.udea.edu.co/apirepos/articles').map(
+  getArticlesByHttp():void{
+    this.requestService.getArticlesByHttp().subscribe(
       (response) => {
-        return response.json();
+        this.articles = response.articles;
+      },
+      (err)=>{
+        console.log("ERROR");
+        console.log(err);
       }
     );
   }
