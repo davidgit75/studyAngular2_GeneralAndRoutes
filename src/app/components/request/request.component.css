@@ -1,0 +1,9 @@
+.mul li{
+    list-style: none;
+}
+
+.selected{
+    color: orangered;
+    background-color: lightgrey;
+    padding: 6px;
+}

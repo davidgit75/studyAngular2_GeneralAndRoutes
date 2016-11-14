@@ -1,0 +1,38 @@
+
+
+<div class="container" style="margin-top: 100px;">
+  <div class="row">
+    <div class="col s12 m8 offset-s2 l6 offset-l3">
+      <div class="card  red lighten-1" *ngIf="loginError">
+        <div class="card-content">
+          <p class="msgErrorLogin">
+            {{msgError}}
+          </p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-content">
+          <form (submit)="login()">
+            <div class="input-field">
+              <input type="email" placeholder="email" name="email" [(ngModel)]="user.email" required>
+            </div>
+
+            <div class="input-field">
+              <input type="password" placeholder="password" name="password" [(ngModel)]="user.password" required>
+            </div>
+            
+            <div class="input-field">
+              <button type="submit" class="btn indigo">Entrar</button>
+            </div>
+            
+          </form>
+
+          {{email}}
+          <br>
+          {{password}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
