@@ -1,11 +1,25 @@
 
+<div *ngIf="isGettingData">
+  <div class="preloader-wrapper big active">
+    <div class="spinner-layer spinner-blue-only">
+      <div class="circle-clipper left">
+        <div class="circle"></div>
+      </div><div class="gap-patch">
+        <div class="circle"></div>
+      </div><div class="circle-clipper right">
+        <div class="circle"></div>
+      </div>
+    </div>
+  </div>
+</div>
 
 
-<div *ngIf="!isEmpty">
+<div *ngIf="!isEmpty && !isGettingData">
   <ul class="collapsible popout" data-collapsible="accordion">
   <li *ngFor="let article of articles">
-    <div class="collapsible-header"><i class="material-icons">mode_edit</i>{{article.name}}</div>
-    <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+    <!--<div class="collapsible-header"><i class="material-icons">mode_edit</i>{{article.name}}</div>
+    <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>-->
+    <app-article [title]="article.title"></app-article>
   </li>
 </ul>
 </div>

@@ -10,6 +10,7 @@ import { RequestService } from '../../services/request.service';
 export class UsersComponent implements OnInit {
 
   posts:Array<any> = [];
+  isGettingData:Boolean = false;
 
   constructor(private requestService:RequestService) { }
 
@@ -18,8 +19,10 @@ export class UsersComponent implements OnInit {
   }
 
   getPosts():void{
+    this.isGettingData = true;
     this.requestService.getPosts().subscribe(
       (response)=>{
+        this.isGettingData = false;
         this.posts = response;
       }
     );

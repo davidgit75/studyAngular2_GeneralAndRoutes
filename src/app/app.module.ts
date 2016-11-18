@@ -10,6 +10,12 @@ import { LoginComponent } from './components/login/login.component';
 import { RequestComponent } from './components/request/request.component';
 import { ContentComponent } from './components/content/content.component';
 import { UsersComponent } from './components/users/users.component';
+import { FormComponent } from './components/form/form.component';
+import { ArticleComponent } from './components/article/article.component';
+import { HighlightDirective } from './directives/highlight.directive';
+
+import { FormsDirective } from './directives/forms.directive';
+import { UPLOAD_DIRECTIVES } from 'ng2-uploader/ng2-uploader'; 
 
 
 @NgModule({
@@ -19,7 +25,12 @@ import { UsersComponent } from './components/users/users.component';
     LoginComponent,
     RequestComponent,
     ContentComponent,
-    UsersComponent
+    UsersComponent,
+    FormComponent,
+    ArticleComponent,
+    HighlightDirective,
+    FormsDirective,
+    UPLOAD_DIRECTIVES
   ],
   imports: [
     BrowserModule,

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { RequestService } from '../../services/request.service';
 
+import { ArticleComponent } from '../article/article.component';
+
 @Component({
   selector: 'app-request',
   templateUrl: './request.component.html',
@@ -11,6 +13,7 @@ import { RequestService } from '../../services/request.service';
 export class RequestComponent implements OnInit {
 
   articles:Array<any> = [];
+  isGettingData:Boolean = false;
 
   counter = this.articles.length+1;
 
@@ -37,8 +40,10 @@ export class RequestComponent implements OnInit {
   }
 
   getArticlesByHttp():void{
+    this.isGettingData = true;
     this.requestService.getArticlesByHttp().subscribe(
       (response) => {
+        this.isGettingData = false;
         this.articles = response.articles;
       },
       (err)=>{
